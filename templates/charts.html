@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Usage Graphs</title>
+  <script src="{{ url_for('static', filename='chart.min.js') }}"></script>
+</head>
+<body>
+  <h2>Average Usage Insights</h2>
+  <canvas id="usageChart" width="300" height="200"></canvas>
+
+  <script>
+    const ctx = document.getElementById('usageChart').getContext('2d');
+    const usageChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Screen Time', 'Unlocks', 'Sleep Hours', 'App Usage'],
+        datasets: [{
+          label: 'Average Daily Stats',
+          data: [
+            {{ data.screen_time | round(2) }},
+            {{ data.unlock_count | round(2) }},
+            {{ data.sleep_hours | round(2) }},
+            {{ data.app_usage | round(2) }}
+          ],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#8e44ad']
+        }]
+      },
+      options: {
+        responsive: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

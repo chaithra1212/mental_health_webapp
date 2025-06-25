@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mental Health Support</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f5f9fc;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: darkslategrey;
+      padding: 1rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .main-section {
+      flex: 1;
+      background-image: url("{{ url_for('static', filename='images/mainpage.png') }}");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 4rem 2rem;
+      text-align: right;
+    }
+
+    .content-box {
+      background: rgba(0, 100, 0, 0.904);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 450px;
+      margin-right: 5%;
+      color: white;
+    }
+
+    .content-box h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-box p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: darkslategrey;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .main-section {
+        justify-content: center;
+        text-align: center;
+      }
+      .content-box {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mental Health Care</h1>
+    <nav>
+  <a href="{{ url_for('index') }}">Home</a>
+  {% if session.get('username') %}
+    <a href="{{ url_for('predict') }}">Predict</a>
+    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  {% else %}
+    <a href="{{ url_for('login') }}">Login</a>
+    <a href="{{ url_for('signup') }}">Signup</a>
+  {% endif %}
+</nav>
+  </header>
+
+  <section class="main-section">
+    <div class="content-box">
+      <h2>Your Mental Health Matters</h2>
+      <p>Support, tools, and guidance for a healthier mind. Take the first step today.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Contact us: chaithra8896@gmail.com | +91 9966110842</p>
+    <p>&copy; 2025 Mental Health Care. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

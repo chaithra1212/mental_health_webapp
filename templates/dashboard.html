@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Mental Health</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: darkslateblue;
+      padding: 1rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: darkslateblue;
+    }
+
+    .summary {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .summary div {
+      background: #e9eff6;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      flex: 1 1 150px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    footer {
+      background: darkslateblue;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .summary {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mental Health Dashboard</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('predict') }}">Predict</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Welcome to Your Dashboard</h2>
+
+    <div class="summary">
+      <div>
+        <h3>Total Predictions</h3>
+        <p>{{ total_predictions }}</p>
+      </div>
+      {% for mood, count in mood_counts.items() %}
+      <div>
+        <h3>{{ mood }}</h3>
+        <p>{{ count }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h3>Latest Predictions</h3>
+    {% if latest_predictions %}
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Screen Time</th>
+          <th>Unlock Count</th>
+          <th>Sleep Hours</th>
+          <th>App Usage</th>
+          <th>Prediction</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in latest_predictions %}
+        <tr>
+          <td>{{ entry.username }}</td>
+          <td>{{ entry.screen_time }}</td>
+          <td>{{ entry.unlock_count }}</td>
+          <td>{{ entry.sleep_hours }}</td>
+          <td>{{ entry.app_usage }}</td>
+          <td>{{ entry.prediction }}</td>
+          <td>{{ entry.timestamp }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No history available yet.</p>
+    {% endif %}
+  </div>
+
+  <footer>
+    &copy; 2025 Mental Health Care
+  </footer>
+
+</body>
+</html>

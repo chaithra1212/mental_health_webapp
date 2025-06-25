@@ -1,0 +1,90 @@
+/* Reset & base font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body background */
+body {
+  background: linear-gradient(to right, #a8edea, #fed6e3);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Shared form container */
+.form-container {
+  background-color: #fff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Header (form title) */
+.form-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  background-color: #8bc34a;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+/* Inputs */
+.form-container input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Submit button */
+.form-container button,
+.form-container input[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover,
+.form-container input[type="submit"]:hover {
+  background-color: #43a047;
+}
+
+/* Paragraph and links */
+.form-container p {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.form-container a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
+}
+
+/* Prediction result text */
+.form-container p strong {
+  display: block;
+  margin-top: 1.5rem;
+  color: #333;
+  font-size: 1.1rem;
+}
